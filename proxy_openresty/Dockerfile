@@ -3,6 +3,10 @@ FROM openresty/openresty:latest
 LABEL maintainer="Ferimer DevTeam <devteam@ferimer.es>"
 LABEL ferimer_service="nginx-proxy"
 
-RUN ln -s /etc/nginx/conf.d/ /usr/local/openresty/nginx/conf.d
+# In order to make this container a drop-in replacement for ferimer/nginx, some links are needed
+## conf.d for relative path includes
+## path for access.log
+RUN ln -s /etc/nginx/conf.d/ /usr/local/openresty/nginx/conf/conf.d && \
+    ln -s /usr/local/openresty/nginx/logs /var/log/nginx
 
 EXPOSE 443
