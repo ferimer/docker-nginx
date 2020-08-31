@@ -10,4 +10,4 @@ RUN ln -s /etc/nginx/conf.d/ /usr/local/openresty/nginx/conf.d && \
     ln -s /etc/nginx/conf.d/ /usr/local/openresty/nginx/conf/conf.d && \
     ln -s /usr/local/openresty/nginx/logs /var/log/nginx
 
-EXPOSE 443
+EXPOSE 80 443
