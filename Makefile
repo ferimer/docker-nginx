@@ -17,7 +17,10 @@ build-rtmp:
 build-static:
 	docker build -t ferimer/nginx:static static/
 
-build: build-spa build-proxy build-rtmp build-openresty-proxy build-static
+build-webdav:
+	docker build -t ferimer/nginx:webdav webdav/
+
+build: build-spa build-proxy build-rtmp build-openresty-proxy build-static build-webdav
 
 publish: build
 	docker push ferimer/nginx:spa
@@ -25,4 +28,5 @@ publish: build
 	docker push ferimer/nginx:rtmp
 	docker push ferimer/openresty:proxy
 	docker push ferimer/nginx:static
+	docker push ferimer/nginx:webdav
 
