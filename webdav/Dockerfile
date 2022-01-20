@@ -8,7 +8,8 @@ RUN apt update && \
     apt autoclean && \
     rm -rf /var/lib/apt/lists/* && \
     sed -i '/gzip_/ s/#\ //g' /etc/nginx/nginx.conf && \
-    sed -i 's/user *nginx;/user www-data;/' /etc/nginx/nginx.conf
+    sed -i 's/user *nginx;/user www-data;/' /etc/nginx/nginx.conf && \
+    rm /etc/nginx/sites-enabled/*
 
 COPY entrypoint.sh /
 COPY default.conf /etc/nginx/conf.d/
