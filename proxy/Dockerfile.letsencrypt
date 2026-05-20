@@ -1,0 +1,8 @@
+FROM nginx:latest
+
+LABEL maintainer="Ferimer DevTeam <devteam@ferimer.es>"
+LABEL ferimer_service="nginx-proxy"
+
+EXPOSE 443
+
+RUN sed -i '1s/^/load_module modules\/ngx_http_acme_module.so;\n/' /etc/nginx/nginx.conf
